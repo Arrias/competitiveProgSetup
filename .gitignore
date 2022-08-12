@@ -1,0 +1,3 @@
+bin
+src/_stressSource
+src/[!A].cpp
