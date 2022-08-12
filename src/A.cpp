@@ -18,45 +18,19 @@
 #define int long long
 #define sqr(x) ((x) * (x))
 
-#ifndef _debug
-    #define debug(...) 42
-    #define debr(...) 42
-#else
-    #define debug(x) cout << #x << " = " << x << endl
-    #define debr(...) { cout << #__VA_ARGS__ << " = ";  _debr(__VA_ARGS__); }
-#endif
-
 using namespace std;
-
-template<class Iter> 
-void _debr(Iter l, Iter r) {
-    cout << "[";
-    for (auto it = l; it != r; ++it) {
-        if (it != l) {
-            cout << ", ";   
-        }
-        cout << *it;
-    }
-    cout << "]" << endl;
-}
-
-template<class C, class F> 
-ostream& operator<<(ostream &out, pair<C, F> p) {
-    return out << "(" << p.first << ", " << p.second << ")";
-}
-
 using ll = long long;
 
-mt19937_64 rnd(std::chrono::system_clock::now().time_since_epoch().count());
+#ifdef _debug
+#include "lib/debug.h"
+#else
+#define debug(...) 42
+#endif
 
 signed main() {
     ios::sync_with_stdio(false);
     cin.tie(0);             
 
-   // cout << "Hello world!\n";
-    int a, b;
-    cin >> a >> b;
-    cout << a + b << "\n";
-
+    
     return 0;
 }

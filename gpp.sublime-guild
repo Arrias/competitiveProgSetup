@@ -1,3 +1,5 @@
+// with experience of https://github.com/vladmosko/buildsystem/blob/master/gpp.sublime-build
+
 {
     "shell_cmd": "g++ \"${file}\" -std=c++1y -o \"${file_path}/${file_base_name}\"",
     "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
@@ -8,7 +10,19 @@
     [
         {
             "name": "Run",
-            "shell_cmd": "g++ \"${file}\" -std=c++1y -o \"${file_path}/${file_base_name}\" && \"${file_path}/${file_base_name}\""
-        }
+            "shell_cmd": "g++ -std=c++2a -D_debug \"${file}\" -std=c++2a -o \"${file_path}/../bin/${file_base_name}\" && \"${file_path}/../bin/${file_base_name}\" < ${file_path}/input.txt"
+        },
+        {
+            "name": "Stress",
+            "shell_cmd" : "bash \"${file_path}/lib/stress/stress.sh\" ${file}"
+        },
+        {
+            "name": "cStress",
+            "shell_cmd" : "bash \"${file_path}/lib/stress/cstress.sh\" ${file}"
+        },
+        {
+            "name": "checkTime",
+            "shell_cmd" : "bash \"${file_path}/lib/stress/timecheck.sh\" ${file}"
+        },
     ]
 }
